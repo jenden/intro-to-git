@@ -22,15 +22,15 @@ The goal is at the end of this lab you should are Git literate (giterate?). You'
 
    - On a Mac, open the Terminal application type `git --version` and then hit enter. If you see a response like the one below you're all set. If git is not installed, you should be prompted to install the Xcode Command Line tools from Apple. If all else fails, follow the instructions on [git-scm.org](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install for macOS.
 
-     <img src="images/macos-git-version.png" alt="macos-git-version" style="zoom:45%;" />
+     <img src="images/macos-git-version.png" alt="macos-git-version" width="500"/>
 
    - Windows doesn't come pre-installed with Git so you'll need to download it from [git-scm.com](https://git-scm.com/downloads) for Windows. During the installation you should select the defaults for all prompts except the text editor. Here I highly recommend selecting `nano` because the default `vim` , while powerful, is not at all user friendly. 
 
-     <img src="images/windows-git-text-editor.png" alt="windows-git-text-editor" style="zoom:40%;" />
+     <img src="images/windows-git-text-editor.png" alt="windows-git-text-editor" width="500"/>
 
      Find *Git Bash* in your start menu and open a new prompt. Type `git --version` to confirm that git is available and installed. You should see something like this:
 
-     <img src="images/windows-git-bash.png" alt="windows-git-bash" style="zoom:45%;" />
+     <img src="images/windows-git-bash.png" alt="windows-git-bash" width="500"/>
 
    - If you use Linux, my guess is you already know what you're doing. If not, use Google to install git for your specific distribution. 
 
