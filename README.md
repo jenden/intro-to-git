@@ -3,7 +3,6 @@
 >  If you write code, you should be using a version control system. 
 
 
-
 At it's most basic, version control tracks changes in files over time and allows you to easily view differences and restory the last working version if you break something (which you will). Most version control systems work at the file level so they don’t care if you’re writing R, Python, GAMS, C++ or CSS or just text like this tutorial. 
 
 If you're writing software, then you can connect your version control system into a continuous integration (CI) and continuous delivery or deployment (CD) pipeline that will help you ship faster and better quality products.
@@ -14,6 +13,12 @@ If you're writing software, then you can connect your version control system int
 
 The goal is at the end of this lab you should are Git literate (giterate?). You'll know why it's useful, the basics of how it works, how to follow a simple analysis workflow and enough about advanced capabilities that you can decide if you want to learn more.
 
+
+### Questions
+
+1. Have you used a version control system before?
+2. How comfortable are you with using a command line interface?
+3. How often do you anticipate writing code in your career?
 
 
 ### What you'll need
@@ -43,24 +48,29 @@ The goal is at the end of this lab you should are Git literate (giterate?). You'
    - Looking at the contents of a file with `cat` or `less`
 
 
+### Activity
 
-### Questions
+We're going to recreate the plot of Covid-19 cases by region since the 100th case using the data compiled by [John's Hopkins](https://github.com/CSSEGISandData). We'll start with an empty folder, initialize a repository and we'll build up the contents together to create a simple version of this plot. While we're going through this process we'll talk about how git works under the hood and what each action is doing. This should take about an hour.
 
-1. Have you used a version control system before?
+Then you should find a partner, clone your partner's repository and make an improvement like adding growth rate lines, filters for country, hover tools, etc. Once the changes are working locally, you will submit a pull request for your partner which explains the changes. We'll go through how to review the changes and merge them into your repository.
 
-2. How comfortable are you with using a command line interface?
-
-3. How often do you anticipate writing code in your career?
-
-   
+At the end we'll try to save a bit of time to through some useful next steps and answer questions. 
 
 
+## Recommended Resources
 
-### Other Resources
+**Getting started**
+* [Version Control with GitHub](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html#1) from Data Science for Economists course at University of Oregon. 
+* [Happy Git and GitHub for the useR](https://happygitwithr.com)
+* [Development Workflows for Data Scientists](https://resources.github.com/downloads/development-workflows-data-scientists.pdf)
 
-* [Explain Git in Simple Words](https://smusamashah.github.io/explain-git-in-simple-words)
-* Interactive [Visualizing Git Concepts](https://onlywei.github.io/explain-git-with-d3/) web app
-* [Missing CS Semester](https://missing.csail.mit.edu/2020/version-control/) from MIT
-* This free [video course](https://www.git-tower.com/learn/) from the creators of Git Tower
+**When things go wrong**
 * [Oh Sh!t Git](https://ohshitgit.com) when you've made a mistake
 
+**How git works**
+* [Explain Git in Simple Words](https://smusamashah.github.io/explain-git-in-simple-words)
+* Interactive [Visualizing Git Concepts](https://onlywei.github.io/explain-git-with-d3/) web app
+
+**Going deeper**
+* [Missing CS Semester](https://missing.csail.mit.edu/2020/version-control/) from MIT
+* This free [video course](https://www.git-tower.com/learn/) from the creators of Git Tower that goes into a lot of the nitty gritty details.
