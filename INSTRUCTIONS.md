@@ -6,7 +6,8 @@ We're going to create a plot of the Covid-19 cases around the world using public
 
 
 
-### But first, what is Git?
+
+## But first, what is Git?
 
 Git is a distributed version control system. It's software to help track and manage source code, which means it works with any kind of text files. It was developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) (the creator of Linux) to manage the Linux kernel. The software is open source and freely distributed.
 
@@ -25,14 +26,13 @@ But Git is not a panacea and there are many ways to tie yourself up in knots. Ho
 
 GitHub repositories can be **public** (like [Git itself](https://github.com/git/git), [Python](https://github.com/python/cpython), various [BC Government Projects](https://github.com/bcgov)) or **private** (users include the [US Dept of Defense](https://github.com/deptofdefense), [Microsoft](https://github.com/Microsoft), and [UBC](https://github.com/ubc-library)). While there are other services (I like GitLab), GitHub is the defactor standard in the industry so we're going to use it for this tutorial.
 
-![example-git-repo](images/example-git-repo.png)
+![example-git-repo](images/example-git-repo.png)  
 
 
 
-### Create a Repository
+## Create a Repository
 
 A repository starts as just a folder on your computer. Then we'll use git to initialize a repository and add files. 
-
 
 
 > We're going to use the terminal to do this, so prepare yourself. I'll use `$` to denote the bash prompt (although yours may be `>`  or `%` or something else entirely) and `# <a comment>` to add additional context. The output  of commands will not have any symbol.
@@ -69,11 +69,11 @@ And we have a repository. It's empty, but now it's an empty git repository. If y
 
 
 
-> Along with `.git`, you should have seen two other entires: `.` and `..`.  `.` is a reference to the current directory and `..` is a reference to the parent directory. You can try navigating around with different combinations of `.` and `..` like `cd ..` will bring you to `covid-19` and `cd covid-19/../` will take you on trip into the covid directory and then back out.
+> Note: Along with `.git`, you should have seen two other entires: `.` and `..`.  `.` is a reference to the current directory and `..` is a reference to the parent directory. You can try navigating around with different combinations of `.` and `..` like `cd ..` will bring you to `covid-19` and `cd covid-19/../` will take you on trip into the covid directory and then back out.
 
 
 
-### Add some files
+## Add a file
 
 Let's create a README in our repository. A README is a text document (usually in Markdown) that provides new users (and sometimes, yourself in six months) an introduction to the project. It should explain the purpose of the project, how to set up the development environment and how to run links to other useful information, either in the repository or externally.
 
@@ -165,7 +165,7 @@ Date:   Wed Apr 29 22:06:27 2020 -0700
 
 
 
-### Add some more files!
+## Add some more files
 
 Let's make this repository do something useful. I've created a script to pull the daily COVID-19 data curated by Johns Hopkins. Create a new directory called `scripts` in your repository and then add the [`update_data.py`](scripts/update_data.py) script to the directory. 
 
@@ -253,9 +253,9 @@ $ git commit -m "Add data update script and environment requirements"
 
 You can use `git log` to assure yourself the commit worked. You can also check `git status` and see that you have "nothing to commit" because the working tree is "clean".
 
-### 
 
-### Get some data
+
+## Get some data
 
 Now let's create a virtual environment, install our requirements and run our `update_data.py` script so we can start to visualize the data!
 
@@ -349,7 +349,7 @@ $ git commit -m "Create gitignore"
 
 
 
-### Under the hood
+## Under the hood
 
 You may have noticed that every time we get the status or make commits, git tells us something about being on "branch master". This raises two questions: what's a branch, and what's master?
 
@@ -371,7 +371,7 @@ Okay, back to creating our plot.
 
 
 
-### Create the plot!
+## Create the plot!
 
 Now we have our data, we're ready to visualize the data and save a plot. We'll use [plotly express](https://plotly.com/python/plotly-express/) so we'll need to add `plotly==4.6` to the *requirements.txt* file. If you check the status of the repository you'll see a modified file. We can check what's been modified by running `git diff`.
 
@@ -487,7 +487,7 @@ Commit your changes with an appropriate commit message and then let's push a cop
 
 
 
-### Remote repository on GitHub
+## Remote repository on GitHub
 
 So far we've been grouping our file changes into commits, and adding commits into our local repository. Now we're ready to start synchronizing our commits with a remote repository. 
 
@@ -495,7 +495,7 @@ So far we've been grouping our file changes into commits, and adding commits int
 
 Login to your account on [GitHub](https://github.com/login). Look for the green "new" button and create a repository. Give it a reasonable name a short description. You can choose to make it private (only you can see it) or public. 
 
-![create-repository](images/create-repository.png)
+![create-repository](images/github-create-repository.png)
 
 Once created, you'll see the main page which lists a number of options for how to get started with your repository. We're looking to "push an existing repository" because we have an existing local repository and we want to "push" the commits to the new GitHub remote repository we've just created. Before you copy and run the commands, let's take a look at what they do.
 
@@ -532,13 +532,13 @@ You can see that all the commits we made on our local machine now show up here. 
 
 
 
-### Cloning a repository
+## Cloning a repository
 
 
 
 
 
-### Branching
+## Branching
 
 In the animation below, we create a new branch called *my-branch*. This creates a new label attached to the commit. However, we don't checkout the branch so when we make another commit we are commiting against master. This results in the master label and the HEAD moving to a new commit while the *my-branch* tag stays put. When we checkout *my-branch* our HEAD moves to the commit at that point. Each subsequent commit while *my-branch* is checked out results in the *my-branch* label and the HEAD reference moving while the *master* label stays put.
 
@@ -546,19 +546,19 @@ In the animation below, we create a new branch called *my-branch*. This creates 
 
 
 
-### Add a feature
+## Add a feature
 
 
 
 
 
-### Merge requests
+## Merge requests
 
 
 
 
 
-### We're done!
+## We're done!
 
 That was a lot. You should know enough now to get by with using git for your work. It will take a while to become proficient but it's a very valuable, even a foundational, skill. Not to mention a GitHub repo with a few demo projects is always a plus when applying for a job.
 
