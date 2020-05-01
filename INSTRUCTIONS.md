@@ -16,7 +16,7 @@ Git is a distributed version control system. It's software to help track and man
 * Separate valid code from new analysis or "features" 
 * Collaborate with others on the same files
 
-But Git is not a panacea and there are many ways to tie yourself up in knots. However, it can reinforce good habits and help save you from yourself. Plus, if you want to work in software, basic familiarity is a job requirement.
+Git is not a panacea and there are many ways to tie yourself up in knots. However, it can reinforce good habits and help save you from yourself. Plus, if you want to work in software, basic familiarity is a job requirement.
 
 
 
@@ -70,6 +70,28 @@ And we have a repository. It's empty, but now it's an empty git repository. If y
 
 
 > Note: Along with `.git`, you should have seen two other entires: `.` and `..`.  `.` is a reference to the current directory and `..` is a reference to the parent directory. You can try navigating around with different combinations of `.` and `..` like `cd ..` will bring you to `covid-19` and `cd covid-19/../` will take you on trip into the covid directory and then back out.
+
+
+
+### User Credentials
+
+When you use Git, your name and email are stored with each contribution. Double check that your user name and email address are registered with Git. You can check this by running
+
+```bash
+$ git config user.name
+jenden
+$ git config user.email
+me@example.com
+```
+
+If you don't see any output, you can set these values for all repositories on your computer with the following commands. Just substitute with your username and email address. If you're created an account with GitHub, you can use the username and email you created there.
+
+```bash
+$ git config user.name <my-username>
+$ git config user.email <my-email@example.com>
+```
+
+
 
 
 
@@ -157,7 +179,7 @@ Commits are identified by a hash which is cryptographically determined by the co
 ```bash
 $ git log
 commit 116767f52e0caddd8505b2f8becf247988ad076e (HEAD -> master)
-Author: jenden <some-email-address@gmail.com>
+Author: jenden <me@example.com>
 Date:   Wed Apr 29 22:06:27 2020 -0700
 
     Add README
@@ -534,15 +556,35 @@ You can see that all the commits we made on our local machine now show up here. 
 
 ## Cloning a repository
 
+Now we're going to contribute to someone else's repo. If you're able, find a partner in the class, and add each other to your repositories. You can do this by going to Settings > Manage Access > Invite Collaborator. Now you should "clone" a copy of your partner's repository. This is one of the key mechanisms of collaborating with Git. 
 
 
 
+> Alternatively, you can clone a second copy of your repository to your computer. This is what I'll be doing for this demonstration.
 
-## Branching
 
-In the animation below, we create a new branch called *my-branch*. This creates a new label attached to the commit. However, we don't checkout the branch so when we make another commit we are commiting against master. This results in the master label and the HEAD moving to a new commit while the *my-branch* tag stays put. When we checkout *my-branch* our HEAD moves to the commit at that point. Each subsequent commit while *my-branch* is checked out results in the *my-branch* label and the HEAD reference moving while the *master* label stays put.
 
-<img alt="git-gif-branches" src="images/git-gif-branches.gif" width=600px>
+Go up a directory so you are no longer in your own Git repository. Then run the `git clone` command and give it the URL of your partner's repository and a folder name to store the project on your machine.
+
+```bash
+$ git clone <my-partners-project-url.git> my-partner-covid-19
+Cloning into 'my-partner-covid-19'...
+remote: Enumerating objects: 22, done.
+remote: Counting objects: 100% (22/22), done.
+remote: Compressing objects: 100% (13/13), done.
+remote: Total 22 (delta 3), reused 19 (delta 2), pack-reused 0
+Unpacking objects: 100% (22/22), done.
+```
+
+If you list `ls` the contents of this directory, you should see a new folder called *my-partner-covid-19*. Change directories with `cd my-partner-covid-19` and you will see some familiar contents. We're now ready to start contributing new code to someone else's repository.  
+
+
+
+## Create a branch
+
+While you can do all your work on the *master* branch, if good practice to separate changes onto new branches, make sure they are working and then "merge" the changes back into the *master* branch. This is especially true when working on someone else's repository. In fact, we'll not only create a new branch, but we'll create a "pull request" on GitHub which tells our partner what we did, let's them see the changes, and gives them the power to merge our changes.
+
+
 
 
 
@@ -553,6 +595,20 @@ In the animation below, we create a new branch called *my-branch*. This creates 
 
 
 ## Merge requests
+
+
+
+
+
+### Under the hood
+
+In the animation below, we create a new branch called *my-branch*. This action creates a new label pointing to the current commit. However, we don't checkout the branch so when we make another commit we are commiting against master. This results in the master label and the HEAD moving to a new commit while the *my-branch* tag stays put. 
+
+When we checkout *my-branch* our HEAD moves to the commit at that point. Each subsequent commit while *my-branch* is checked out results in the *my-branch* label and the HEAD reference moving while the *master* label stays put.
+
+<img alt="git-gif-branches" src="images/git-gif-branches.gif" width=600px>
+
+Finally, we checkout *master* again and merge the changes from *my-branch*. This results in a new commit which has two parent commits. Now the *master* tag references a commit graph which includes the commits in *my-branch* as well as the commit on master. 
 
 
 
