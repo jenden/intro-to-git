@@ -50,11 +50,13 @@ The goal is at the end of this lab you should are Git literate (giterate?). You'
 
 ### Activity
 
-We're going to recreate the plot of Covid-19 cases by region since the 100th case using the data compiled by [John's Hopkins](https://github.com/CSSEGISandData). We'll start with an empty folder, initialize a repository and we'll build up the contents together to create a simple version of this plot. While we're going through this process we'll talk about how git works under the hood and what each action is doing. This should take about an hour.
+We're going to recreate the plot of Covid-19 cases by region since the 100th case using the data compiled by Johns Hopkins. We'll start with an empty folder, initialize a repository and we'll build up the contents together to create a simple version of this plot. While we're going through this process we'll talk about how git works under the hood and what each action is doing.
 
 Then you should find a partner, clone your partner's repository and make an improvement like adding growth rate lines, filters for country, hover tools, etc. Once the changes are working locally, you will submit a pull request for your partner which explains the changes. We'll go through how to review the changes and merge them into your repository.
 
 At the end we'll try to save a bit of time to through some useful next steps and answer questions. 
+
+You can follow along with the [instructions](INSTRUCTIONS.md) or catch up if you missed something.
 
 
 ## Recommended Resources
