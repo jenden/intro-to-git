@@ -18,6 +18,8 @@ Git is a distributed version control system. It's software to help track and man
 
 Git is not a panacea and there are many ways to tie yourself up in knots. However, it can reinforce good habits and help save you from yourself. Plus, if you want to work in software, basic familiarity is a job requirement.
 
+I choose to start managing my code and documentation with Git when an idea passes the boundary from exploration of a concept into a project with identifiable deliverables such as code, figures, analysis. My usual workflow is to start with a notebook, understand what I'm building and then start creating re-usable scripts and modules that I commit to a git repository.. That's what we're going to do today.
+
 
 
 ### Git vs. GitHub
@@ -32,7 +34,7 @@ GitHub repositories can be **public** (like [Git itself](https://github.com/git/
 
 ## Create a Repository
 
-A repository starts as just a folder on your computer. Then we'll use git to initialize a repository and add files. 
+A repository starts as just a folder on your computer. Then we'll use Git to initialize a repository and add files. 
 
 
 > We're going to use the terminal to do this, so prepare yourself. I'll use `$` to denote the bash prompt (although yours may be `>`  or `%` or something else entirely) and `# <a comment>` to add additional context. The output  of commands will not have any symbol.
@@ -55,7 +57,7 @@ $ ls
 
 
 
-We know have a new directory with nothing in it. It's not even a git repository yet. In order to make it a git repository we need to run `git init` from the directory. You can do this at any time in any folder (that's not a child of another git repository) not just an empty one.
+We know have a new directory with nothing in it. It's not even a Git repository yet. In order to make it a Git repository we need to run `git init` from the directory. You can do this at any time in any folder (that's not a child of another Git repository) not just an empty one.
 
 ```bash
 $ git init
@@ -65,7 +67,7 @@ $ ls
 
 
 
-And we have a repository. It's empty, but now it's an empty git repository. If you execute `ls -a` (list all) then should see a `.git` folder. This is where git keeps track of your repository. As a general rule of thumb, you don't need to go in here so just let git do it's thing.
+And we have a repository. It's empty, but now it's an empty Git repository. If you execute `ls -a` (list all) then should see a `.git` folder. This is where Git keeps track of your repository. As a general rule of thumb, you don't need to go in here so just let Git do it's thing.
 
 
 
@@ -143,7 +145,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 
 
-We use the git status to tell us what's going in the repo and often gives us useful hints about what we should do next. The important take away here is that we have "untracked" files. Untracked files are files that existing in the git repository (the top level directory or any child directory) but are not being managed by Git. We can tell git to start tracking a file with the `git add <file>` command.
+We use the `git status` to tell us what's going in the repo and often gives us useful hints about what we should do next. The important take away here is that we have "untracked" files. Untracked files are files that existing in the Git repository (the top level directory or any child directory) but are not being managed by Git. We can tell Git to start tracking a file with the `git add <file>` command.
 
 ```bash
 $ git add README.md
@@ -159,7 +161,7 @@ Changes to be committed:
 
 
 
-The *README.md* file is now in the staging area for our repository with a note that says it's a new file. For git to create an indelible copy of the file with it's current contents, we need to create a "commit". A commit is the immutable, atomic unit of git because the state of the repository is built up from a graph of related commits. 
+The *README.md* file is now in the staging area for our repository with a note that says it's a new file. For Git to create an indelible copy of the file with it's current contents, we need to create a "commit". A commit is the immutable, atomic unit of Git because the state of the repository is built up from a graph of related commits. 
 
 ```bash
 $ git commit -m "Add README"
@@ -236,7 +238,7 @@ pandas==1.0
 
 
 
-That's all done. Let's check the status of our git repository:
+That's all done. Let's check the status of our Git repository:
 
 ```bash
 $ git status
@@ -256,11 +258,11 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 
 
-This is more complicated than before. We have untracked files *requirements.txt* and *scripts/* and modified file *README.md*. Now is a good time to talk about the life cycle of git files. All files we create start out as "untracked" in our working tree. When we use `git add` we checkpoint the current contents of the file in the "staging area". Then when we are happy with the changes we've staged, we can create a permanent record of those changes by creating a commit.
+This is more complicated than before. We have untracked files *requirements.txt* and *scripts/* and modified file *README.md*. Now is a good time to talk about the life cycle of Git files. All files we create start out as "untracked" in our working tree. When we use `git add` we checkpoint the current contents of the file in the "staging area". Then when we are happy with the changes we've staged, we can create a permanent record of those changes by creating a commit.
 
 <img alt="git-workflow-local" src="images/git-workflow-local.png" width=400px>
 
-In this commit, we have changes to the README file that git is tracking (because it was previously committed) and new files we have just created. Let's add them all to the staging area and commit them. We can tell git to add the files by listing them one by one like `git add requirements.txt scripts/update_data.py` or we can tell git to add all files in the current directory using the `.` shorthand.  Now run git commit like before.
+In this commit, we have changes to the README file that Git is tracking (because it was previously committed) and new files we have just created. Let's add them all to the staging area and commit them. We can tell Git to add the files by listing them one by one like `git add requirements.txt scripts/update_data.py` or we can tell Git to add all files in the current directory using the `.` shorthand.  Now run `git commit` like before.
 
 ```bash
 $ git add .
@@ -337,7 +339,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 
 
-Unlike previous files, the *env* directory is specific to our local machine and shouldn't be contributed to the repository. The contents of *data* doesn't need to be version controlled because it can be downloaded from the source at any point in time. In general, it's good practice to keep data out of version control and separate from the code to process it. Luckily it's easy to tell git to ignore files with a [`.gitignore`](https://help.github.com/en/github/using-git/ignoring-files) file. Create a file in the root directory and put in the following contents:
+Unlike previous files, the *env* directory is specific to our local machine and shouldn't be contributed to the repository. The contents of *data* doesn't need to be version controlled because it can be downloaded from the source at any point in time. In general, it's good practice to keep data out of version control and separate from the code to process it. Luckily it's easy to tell Git to ignore files with a [`.gitignore`](https://help.github.com/en/github/using-git/ignoring-files) file. Create a file in the root directory and put in the following contents:
 
 ```
 # .gitignore
@@ -349,7 +351,7 @@ data/
 
 
 
-Now try checking the status of the repository again. You can use`ls` to confirm that the directories still exist but that git is ignoring them. Now commit the contents of the *.gitignore* file and let's continue.
+Now try checking the status of the repository again. You can use`ls` to confirm that the directories still exist but that Git is ignoring them. Now commit the contents of the *.gitignore* file and let's continue.
 
 ```bash
 $ git status
@@ -373,9 +375,9 @@ $ git commit -m "Create gitignore"
 
 ## Under the hood
 
-You may have noticed that every time we get the status or make commits, git tells us something about being on "branch master". This raises two questions: what's a branch, and what's master?
+You may have noticed that every time we get the status or make commits, Git tells us something about being on "branch master". This raises two questions: what's a branch, and what's master?
 
-Under the hood, a git repository is a graph of commits. So far our repository is just a linear network of commits where each new commit references the previous commit. We refer to this history of commits as a branch.
+Under the hood, a Git repository is a graph of commits. So far our repository is just a linear network of commits where each new commit references the previous commit. We refer to this history of commits as a branch.
 
 Master is the name given, by convention, to the main or default branch. It represents a label or "tag" which points to one commit. Every time we make a new commit to the master branch what we're really doing is creating a commit with a parent of the current master branch and then reassigning the master label to this new commit. 
 
@@ -486,7 +488,7 @@ Changes to be committed:
 
 
 
-Now that these changes are staged and ready to be committed. Our working tree is clean (we can verify by running `git diff` which will not indicate any changes). If we want to see the changes that are staged, we need to tell git to look at the staged files with `git diff --staged`. This will create a lot of of output. If you want to look at a single file, you can pass the filename as the last argument.
+Now that these changes are staged and ready to be committed. Our working tree is clean (we can verify by running `git diff` which will not indicate any changes). If we want to see the changes that are staged, we need to tell Git to look at the staged files with `git diff --staged`. This will create a lot of of output. If you want to look at a single file, you can pass the filename as the last argument.
 
 ```bash
 $ git diff --staged .gitignore
@@ -521,13 +523,13 @@ Login to your account on [GitHub](https://github.com/login). Look for the green 
 
 Once created, you'll see the main page which lists a number of options for how to get started with your repository. We're looking to "push an existing repository" because we have an existing local repository and we want to "push" the commits to the new GitHub remote repository we've just created. Before you copy and run the commands, let's take a look at what they do.
 
-The `git remote` command manages references to other repositories. We're going to create a reference to our git remote repository and give it the shorthand name `origin` by convention. This makes more sense when you think that you often get a copy of someone else's repository in which case "origin" refers to the place where your copy originated.
+The `git remote` command manages references to other repositories. We're going to create a reference to our Git remote repository and give it the shorthand name `origin` by convention. This makes more sense when you think that you often get a copy of someone else's repository in which case "origin" refers to the place where your copy originated.
 
 > Note: There are two ways to authenticate with Git. The recommended method is by using an SSH key and a url that looks like `git@github.com:<username>/<repository>.git` but this requires a bit of initial set up. You can also use the url that looks like `https://github.com/<username>/<respository>.git`  and authenticate with your GitHub username and password when prompted. Git will know what to do depending on which url you give it.
 
 
 
-The `git push` command pushes the set of commits in your local repository to a remote repository. The `-u` flag is necessary for the first commit to a new branch and tells git that our local branch should be linked with the `master` branch on the remote repository.
+The `git push` command pushes the set of commits in your local repository to a remote repository. The `-u` flag is necessary for the first commit to a new branch and tells Git that our local branch should be linked with the `master` branch on the remote repository.
 
 Now let's give it a shot.
 
@@ -554,63 +556,178 @@ You can see that all the commits we made on our local machine now show up here. 
 
 
 
-## Cloning a repository
+## Add a new feature
 
-Now we're going to contribute to someone else's repo. If you're able, find a partner in the class, and add each other to your repositories. You can do this by going to Settings > Manage Access > Invite Collaborator. Now you should "clone" a copy of your partner's repository. This is one of the key mechanisms of collaborating with Git. 
-
-
-
-> Alternatively, you can clone a second copy of your repository to your computer. This is what I'll be doing for this demonstration.
+It's been bothering me that the tool tip displayed when hovering over our data points doesn't show the date. It shows the variables on the plot, but because the scale is aligned to days since the 100th case, the dates aren't apparent. We can fix this.
 
 
 
-Go up a directory so you are no longer in your own Git repository. Then run the `git clone` command and give it the URL of your partner's repository and a folder name to store the project on your machine.
+> If you're able, you can work with a partner in the class and contribute to their repository. This is much more like the situation in real life. You'll need to add each other as collaborators to each others repositories. You can do this by going to Settings > Manage Access > Invite Collaborator. Now you can "clone" a copy of your partner's repository and push changes to their repository.
+>
+> Move up a directory so you are no longer in your own Git repository. Then run the `git clone` command and give it the URL of your partner's repository and a folder name to store the project on your machine. 
+>
+> ```bash
+> $ cd ..
+> $ git clone <my-partners-project-url.git> my-partner-covid-19
+> Cloning into 'my-partner-covid-19'...
+> remote: Enumerating objects: 22, done.
+> remote: Counting objects: 100% (22/22), done.
+> remote: Compressing objects: 100% (13/13), done.
+> remote: Total 22 (delta 3), reused 19 (delta 2), pack-reused 0
+> Unpacking objects: 100% (22/22), done.
+> ```
+>
+> 
+>
+> If you list `ls` the contents of this directory, you should see a new folder called *my-partner-covid-19*. Change directories with `cd my-partner-covid-19` and you will see some familiar contents. We're now ready to start contributing new code to someone else's repository.  
+
+
+
+### Create a branch
+
+While you can do all your work on the *master* branch, if good practice to separate changes onto new branches, make sure they are working and then "merge" the changes back into the *master* branch. This is especially true when working on someone else's repository. In fact, we'll not only create a new branch, but we'll create a "pull request" on GitHub which tells our partner what we did, let's them see the changes, and gives them the control to merge our changes only when they're ready.
+
+Create a new branch with the `git branch` command and then list the branches we have defined 
 
 ```bash
-$ git clone <my-partners-project-url.git> my-partner-covid-19
-Cloning into 'my-partner-covid-19'...
-remote: Enumerating objects: 22, done.
-remote: Counting objects: 100% (22/22), done.
-remote: Compressing objects: 100% (13/13), done.
-remote: Total 22 (delta 3), reused 19 (delta 2), pack-reused 0
-Unpacking objects: 100% (22/22), done.
+$ git branch feature/tool-tip-date 
+$ git branch 
+  feature/tool-tip-date
+* master
 ```
 
-If you list `ls` the contents of this directory, you should see a new folder called *my-partner-covid-19*. Change directories with `cd my-partner-covid-19` and you will see some familiar contents. We're now ready to start contributing new code to someone else's repository.  
+
+
+You'll see our two branches and *master* marked with an asterisk because it's currently checked out. Even though we created a branch, any commits we make now will be made to the master branch. To contribute to our branch, you need to run the `git checkout` command. 
+
+```bash
+$ git checkout feauture/tool-tip-date
+Switched to branch 'feature/tool-tip-date'
+$ git branch
+* feature/tool-tip-date
+  master
+$ git status
+On branch feature/tool-tip-date
+nothing to commit, working tree clean
+```
+
+Now let's make the changes. I'm going to add the `hover_data` argument to the plot function and pass a list of the fields that should show up in the tool tip. This list references the name of the column in the data frame, so I'm also going to update the labels dictionary so that "date" becomes "Date". Here's the relevant section of `make_plot.py` with the new additions.
+
+```python
+labels = {
+    'days_since_100': 'Days Since 100 Cases',
+    'confirmed': 'Confirmed Cases',
+    'country': 'Country/Region',
+    'date': 'Date',
+}
+
+fig = px.line(x='days_since_100', y='confirmed', color='country', 
+              data_frame=data.loc[data['country'].isin(top_n.index)], 
+              log_y=True, range_y=[100, y_max], labels=labels, 
+              hover_data=['country', 'confirmed', 'days_since_100', 'date'])
+```
 
 
 
-## Create a branch
+Let's use `git diff` to confirm that these changes exist. 
 
-While you can do all your work on the *master* branch, if good practice to separate changes onto new branches, make sure they are working and then "merge" the changes back into the *master* branch. This is especially true when working on someone else's repository. In fact, we'll not only create a new branch, but we'll create a "pull request" on GitHub which tells our partner what we did, let's them see the changes, and gives them the power to merge our changes.
+```bash
+$ git diff
+diff --git a/scripts/make_plot.py b/scripts/make_plot.py
+index c141358..c6d0536 100644
+--- a/scripts/make_plot.py
++++ b/scripts/make_plot.py
+@@ -55,11 +55,13 @@ labels = {
+     'days_since_100': 'Days Since 100 Cases',
+     'confirmed': 'Confirmed Cases',
+     'country': 'Country/Region',
++    'date': 'Date',
+ }
+ 
+ fig = px.line(x='days_since_100', y='confirmed', color='country', 
+               data_frame=data.loc[data['country'].isin(top_n.index)], 
+-              log_y=True, range_y=[100, y_max], labels=labels)
++              log_y=True, range_y=[100, y_max], labels=labels, 
++              hover_data=['country', 'confirmed', 'days_since_100', 'date'])
+ 
+ plotly.offline.plot(fig, filename='figures/covid-19-cases.html')
+```
 
 
 
+Run the script to ensure the plot generates properly and works as expected. Then commit the changes to your branch and push to the remote repository. Note that you'll need to use the `-u` flag to set the upstream branch because the remote repository doesn't yet have a *feature/tool-tip-date* branch. Don't worry if you forget through, Git will remind you.
+
+```bash
+$ git add scripts/make_plot.py                                                                     (covid-19) 
+$ git commit -m "Add date to tool tip" 
+$ git push -u origin feature/tool-tip-date
+```
 
 
-## Add a feature
+
+Now we can go to GitHub and create a pull request to merge the changes back into master.
 
 
 
+### Pull requests
+
+When you want to merge one branch into another (usually a feature branch into the main master branch), the best practice is to open a pull request on the server that states what changes were made. This request is submitted to the owner of repository so they can "pull" the changes you've created into their code.
+
+From your repo on GitHub, you should see a prompt for a new pull request. This is usually populate from the latest branch you pushed, but if not, you will need to select that you are merging *feature/tool-tip-data* into *master*. Give a quick description of what has changed and create the request.
+
+![github-new-pr](images/github-new-pr.png)
 
 
-## Merge requests
+
+Once you've create the pull request, you can click around the tabs to see the commits in the request and view the diff between the two branches. You can even click and add comments or suggest correctsion to specific lines of code directly within the browser. This will start a conversation thread so you can discs the changes and resolve.
+
+![github-pr-diff](images/github-pr-diff.png)
+
+Once you're ready, click merge and these changes will be merged into master.
 
 
+
+### Updating your local branch
+
+These changes now exist on the remote server, but they haven't been incorporated into your local repository. To do that we'll need to introduce the last piece of the life cycle: syncing changes from the server. We'll use two commands, `git fetch` to check for updates, and `git pull` to incorporate these changes into your local repository.
+
+```bash
+$ git checkout master
+$ git fetch
+$ git status
+On branch master
+Your branch is behind 'origin/master' by 3 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+nothing to commit, working tree clean
+$ git pull
+Updating 16b17a8..447e896
+Fast-forward
+ scripts/make_plot.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+```
+
+
+
+And that's it! You've now gone through the lifecycle of branching, making changes, creating a pull request and then merging those changes back into the repository.
 
 
 
 ### Under the hood
 
-In the animation below, we create a new branch called *my-branch*. This action creates a new label pointing to the current commit. However, we don't checkout the branch so when we make another commit we are commiting against master. This results in the master label and the HEAD moving to a new commit while the *my-branch* tag stays put. 
+So what's actually happening while we do this? In the animation below, we create a new branch called *my-branch*. This action creates a new label pointing to the current commit. However, we don't checkout the branch so when we make another commit we are commiting against master. This results in the master label and the HEAD moving to a new commit while the *my-branch* tag stays put. 
 
 When we checkout *my-branch* our HEAD moves to the commit at that point. Each subsequent commit while *my-branch* is checked out results in the *my-branch* label and the HEAD reference moving while the *master* label stays put.
 
 <img alt="git-gif-branches" src="images/git-gif-branches.gif" width=600px>
 
-Finally, we checkout *master* again and merge the changes from *my-branch*. This results in a new commit which has two parent commits. Now the *master* tag references a commit graph which includes the commits in *my-branch* as well as the commit on master. 
+Finally, we checkout *master* again and merge the changes from *my-branch*. This results in a new commit which has two parent commits. Now the *master* tag references a commit graph which includes the commits in *my-branch* as well as the commit on *master*. 
 
 
+
+### Merge Conflicts
+
+Sometimes it's not possible to merge two branches neatly because there are conflicting changes. In this case you will see the dreaded "merge conflict" message from Git. Don't panic. You will just need to look at each conflicted file, manually make the edits so the files have the correct changes and then tell Git to continue. This is a longer discussion than we have time for so I recommend checking out [this blog post](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts) or this [help article](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/addressing-merge-conflicts).
 
 
 
