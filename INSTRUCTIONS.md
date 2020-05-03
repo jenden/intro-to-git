@@ -94,8 +94,7 @@ $ git config user.email <my-email@example.com>
 
 
 
-
-
+<br/><br/>
 ## Add a file
 
 Let's create a README in our repository. A README is a text document (usually in Markdown) that provides new users (and sometimes, yourself in six months) an introduction to the project. It should explain the purpose of the project, how to set up the development environment and how to run links to other useful information, either in the repository or externally.
