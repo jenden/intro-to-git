@@ -5,8 +5,7 @@ We're going to create a plot of the Covid-19 cases around the world using public
 [![example-plot](images/example-plot.png)](https://www.ft.com/content/ff3affea-63c7-11ea-b3f3-fe4680ea68b5)
 
 
-
-
+<br/><br/>
 ## But first, what is Git?
 
 Git is a distributed version control system. It's software to help track and manage source code, which means it works with any kind of text files. It was developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) (the creator of Linux) to manage the Linux kernel. The software is open source and freely distributed.
@@ -31,7 +30,7 @@ GitHub repositories can be **public** (like [Git itself](https://github.com/git/
 ![example-git-repo](images/example-git-repo.png)  
 
 
-
+<br/><br/>
 ## Create a Repository
 
 A repository starts as just a folder on your computer. Then we'll use Git to initialize a repository and add files. 
@@ -188,7 +187,7 @@ Date:   Wed Apr 29 22:06:27 2020 -0700
 ```
 
 
-
+<br/><br/>
 ## Add some more files
 
 Let's make this repository do something useful. I've created a script to pull the daily COVID-19 data curated by Johns Hopkins. Create a new directory called `scripts` in your repository and then add the [`update_data.py`](scripts/update_data.py) script to the directory. 
@@ -278,7 +277,7 @@ $ git commit -m "Add data update script and environment requirements"
 You can use `git log` to assure yourself the commit worked. You can also check `git status` and see that you have "nothing to commit" because the working tree is "clean".
 
 
-
+<br/><br/>
 ## Get some data
 
 Now let's create a virtual environment, install our requirements and run our `update_data.py` script so we can start to visualize the data!
@@ -372,7 +371,7 @@ $ git commit -m "Create gitignore"
 ```
 
 
-
+<br/><br/>
 ## Under the hood
 
 You may have noticed that every time we get the status or make commits, Git tells us something about being on "branch master". This raises two questions: what's a branch, and what's master?
@@ -394,7 +393,7 @@ These animations were created with the excellent [Explaint Git](https://onlywei.
 Okay, back to creating our plot.
 
 
-
+<br/><br/>
 ## Create the plot!
 
 Now we have our data, we're ready to visualize the data and save a plot. We'll use [plotly express](https://plotly.com/python/plotly-express/) so we'll need to add `plotly==4.6` to the *requirements.txt* file. If you check the status of the repository you'll see a modified file. We can check what's been modified by running `git diff`.
@@ -510,7 +509,7 @@ index 48656a6..923db9e 100644
 Commit your changes with an appropriate commit message and then let's push a copy of our entire repository up to GitHub.
 
 
-
+<br/><br/>
 ## Remote repository on GitHub
 
 So far we've been grouping our file changes into commits, and adding commits into our local repository. Now we're ready to start synchronizing our commits with a remote repository. 
@@ -555,8 +554,8 @@ Congratulations! You've just pushed your first commits up to a GitHub repo. Let'
 You can see that all the commits we made on our local machine now show up here. Also, none of the files we excluded from the repository like *data* or *env* have been pushed to the remote repository.
 
 
-
-## Add a new feature
+<br/><br/>
+## Contribute a new feature
 
 It's been bothering me that the tool tip displayed when hovering over our data points doesn't show the date. It shows the variables on the plot, but because the scale is aligned to days since the 100th case, the dates aren't apparent. We can fix this.
 
@@ -581,8 +580,7 @@ It's been bothering me that the tool tip displayed when hovering over our data p
 >
 > If you list `ls` the contents of this directory, you should see a new folder called *my-partner-covid-19*. Change directories with `cd my-partner-covid-19` and you will see some familiar contents. We're now ready to start contributing new code to someone else's repository.  
 
-
-
+<br/><br/>
 ### Create a branch
 
 While you can do all your work on the *master* branch, if good practice to separate changes onto new branches, make sure they are working and then "merge" the changes back into the *master* branch. This is especially true when working on someone else's repository. In fact, we'll not only create a new branch, but we'll create a "pull request" on GitHub which tells our partner what we did, let's them see the changes, and gives them the control to merge our changes only when they're ready.
@@ -668,7 +666,7 @@ $ git push -u origin feature/tool-tip-date
 Now we can go to GitHub and create a pull request to merge the changes back into master.
 
 
-
+<br/><br/>
 ### Pull requests
 
 When you want to merge one branch into another (usually a feature branch into the main master branch), the best practice is to open a pull request on the server that states what changes were made. This request is submitted to the owner of repository so they can "pull" the changes you've created into their code.
@@ -686,7 +684,7 @@ Once you've create the pull request, you can click around the tabs to see the co
 Once you're ready, click merge and these changes will be merged into master.
 
 
-
+<br/><br/>
 ### Updating your local branch
 
 These changes now exist on the remote server, but they haven't been incorporated into your local repository. To do that we'll need to introduce the last piece of the life cycle: syncing changes from the server. We'll use two commands, `git fetch` to check for updates, and `git pull` to incorporate these changes into your local repository.
@@ -712,7 +710,7 @@ Fast-forward
 And that's it! You've now gone through the lifecycle of branching, making changes, creating a pull request and then merging those changes back into the repository.
 
 
-
+<br/><br/>
 ### Under the hood
 
 So what's actually happening while we do this? In the animation below, we create a new branch called *my-branch*. This action creates a new label pointing to the current commit. However, we don't checkout the branch so when we make another commit we are commiting against master. This results in the master label and the HEAD moving to a new commit while the *my-branch* tag stays put. 
@@ -724,13 +722,13 @@ When we checkout *my-branch* our HEAD moves to the commit at that point. Each su
 Finally, we checkout *master* again and merge the changes from *my-branch*. This results in a new commit which has two parent commits. Now the *master* tag references a commit graph which includes the commits in *my-branch* as well as the commit on *master*. 
 
 
-
+<br/><br/>
 ### Merge Conflicts
 
 Sometimes it's not possible to merge two branches neatly because there are conflicting changes. In this case you will see the dreaded "merge conflict" message from Git. Don't panic. You will just need to look at each conflicted file, manually make the edits so the files have the correct changes and then tell Git to continue. This is a longer discussion than we have time for so I recommend checking out [this blog post](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts) or this [help article](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/addressing-merge-conflicts).
 
 
-
+<br/><br/>
 ## We're done!
 
 That was a lot. You should know enough now to get by with using git for your work. It will take a while to become proficient but it's a very valuable, even a foundational, skill. Not to mention a GitHub repo with a few demo projects is always a plus when applying for a job.
