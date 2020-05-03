@@ -1,24 +1,18 @@
 # Intro to Git
 
 >  If you write code, you should be using a version control system. 
-
+  
+<br/><br/>
 
 At it's most basic, version control tracks changes in files over time and allows you to easily view differences and restory the last working version if you break something (which you will). Most version control systems work at the file level so they don’t care if you’re writing R, Python, GAMS, C++ or CSS or just text like this tutorial. 
 
 If you're writing software, then you can connect your version control system into a continuous integration (CI) and continuous delivery or deployment (CD) pipeline that will help you ship faster and better quality products.
 
 
-
 ### What you'll learn
 
-The goal is at the end of this lab you should are Git literate (giterate?). You'll know why it's useful, the basics of how it works, how to follow a simple analysis workflow and enough about advanced capabilities that you can decide if you want to learn more.
+The goal is at the end of this lab you should are Git literate (giterate?). You'll know why it's useful, the basics of how it works, how to follow a simple analysis workflow and enough to decide if you want to learn more.
 
-
-### Questions
-
-1. Have you used a version control system before?
-2. How comfortable are you with using a command line interface?
-3. How often do you anticipate writing code in your career?
 
 
 ### What you'll need
@@ -47,8 +41,8 @@ The goal is at the end of this lab you should are Git literate (giterate?). You'
    - Listing files in a directory with `ls`
    - Looking at the contents of a file with `cat` or `less`
 
-
-### Activity
+<br/><br/>
+## Activity
 
 We're going to recreate the plot of Covid-19 cases by region since the 100th case using the data compiled by Johns Hopkins. We'll start with an empty folder, initialize a repository and we'll build up the contents together to create a simple version of this plot. While we're going through this process we'll talk about how git works under the hood and what each action is doing.
 
@@ -58,7 +52,7 @@ At the end we'll try to save a bit of time to through some useful next steps and
 
 You can follow along with the [instructions](INSTRUCTIONS.md) or catch up if you missed something.
 
-
+<br/><br/>
 ## Recommended Resources
 
 **Getting started**
