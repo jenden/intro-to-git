@@ -14,7 +14,6 @@ If you're writing software, then you can connect your version control system int
 The goal is at the end of this lab you should are Git literate (giterate?). You'll know why it's useful, the basics of how it works, how to follow a simple analysis workflow and enough to decide if you want to learn more.
 
 
-
 ### What you'll need
 
 1. Git installed on your computer. Depending on your system, it may already be installed. 
@@ -33,13 +32,20 @@ The goal is at the end of this lab you should are Git literate (giterate?). You'
 
    - If you use Linux, my guess is you already know what you're doing. If not, use Google to install git for your specific distribution. 
 
-2. An account on the git server of your choice. I'm going to be using [GitHub](https://github.com) in the lecture because it's very popular and I recommend you do as well unless you already have an account somewhere else. 
+2. An account on the git server of your choice. I'm going to be using [GitHub](https://github.com) in the demo because it's very popular and I recommend you do as well unless you already have an account somewhere else. 
+  
    - [Sign-up for GitHub](https://github.com/join) or [login](https://github.com/login) in to an existing account. You'll need these credentials during the lab in order to commit code to your repository.
+   
 3. A proper text editor or IDE. I plan to use [Visual Studio Code](https://code.visualstudio.com) because it's nice middle ground between a barebones text editor and a full fledged Integrated Development Environment (IDE). You can use whatever editor you're comfortable with as long as it can manage plain text and code (i.e. not Microsoft Word).
+
 4. Basic familiarity with using a terminal. If you're on Windows I recommend getting familiar with *Git Bash* which is packaged with Git. On Mac or Linux just open a Terminal application. If you're unfamiliar with bash or need a refresher, please check out these links *before* we start the lab. I recommend [this lecture](https://missing.csail.mit.edu/2020/course-shell/) or this [blog post](https://towardsdatascience.com/basics-of-bash-for-beginners-92e53a4c117a). At a minimum you should be comfortable
    - Navigating the file system with `pwd` and `cd` 
    - Listing files in a directory with `ls`
    - Looking at the contents of a file with `cat` or `less`
+   
+5. If you want to participate in the activity, you will also need to setup a python environment includes `pandas`, `requests` and `plotly`. You can achieve this by creating a new environment and running `pip install -r requirements.txt` with the `requirements.txt` file from this repository.
+
+
 
 <br/><br/>
 ## Activity
@@ -48,9 +54,9 @@ We're going to recreate the plot of Covid-19 cases by region since the 100th cas
 
 Then you should find a partner, clone your partner's repository and make an improvement like adding growth rate lines, filters for country, hover tools, etc. Once the changes are working locally, you will submit a pull request for your partner which explains the changes. We'll go through how to review the changes and merge them into your repository.
 
-At the end we'll try to save a bit of time to through some useful next steps and answer questions. 
+I'll try to save a bit of time to through some useful next steps and answer questions. You can follow along with the [instructions](INSTRUCTIONS.md) or catch up if you missed something.
 
-You can follow along with the [instructions](INSTRUCTIONS.md) or catch up if you missed something.
+
 
 <br/><br/>
 ## Recommended Resources
