@@ -21,7 +21,7 @@ At the end of this lab you should be Git literate. You'll know why it's useful, 
 
 1. Git installed on your computer. Depending on your system, it may already be installed. I have some basic instructions for Mac and Windows below. If they don't work for you, turn to your friends, Google and Stack Overflow! 
 
-   - On a Mac, open the Terminal application type `git --version` and then hit enter. If you see a response like the one below you're all set. If git is not installed, you should be prompted to install the Xcode Command Line tools from Apple. If all else fails, follow the instructions on [git-scm.org](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install for macOS.
+   - On a Mac, open the Terminal application type `git --version` and then hit enter. If you see a response like the one below you're all set. If git is not installed, you should be prompted to install the Xcode Command Line tools from Apple. If all else fails, follow the instructions on [git-scm.org](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install for macOS. I had 2.24 when this screenshot was taken, but the specific version doesn't make much difference.
 
      <img src="images/macos-git-version.png" alt="macos-git-version" width="500"/>
 
@@ -29,7 +29,7 @@ At the end of this lab you should be Git literate. You'll know why it's useful, 
 
      <img src="images/windows-git-text-editor-2.32.png" alt="windows-git-text-editor" width="500"/>
 
-     Find *Git Bash* in your start menu and open a new prompt. Type `git --version` to confirm that git is available and installed. You should see something like this:
+     Find *Git Bash* in your start menu and open a new prompt. Type `git --version` to confirm that git is available and installed. You should see something like this. I had 2.26 when this screenshot was taken, but the version doesn't really matter. 
 
      <img src="images/windows-git-bash.png" alt="windows-git-bash" width="500"/>
 
