@@ -25,9 +25,9 @@ At the end of this lab you should be Git literate. You'll know why it's useful, 
 
      <img src="images/macos-git-version.png" alt="macos-git-version" width="500"/>
 
-   - Windows doesn't come pre-installed with Git so you'll need to download it from [git-scm.com](https://git-scm.com/downloads) for Windows. During the installation you should select the defaults for all prompts except the text editor. Here I highly recommend selecting `nano` because the default `vim` , while powerful, is not at all user friendly. 
+   - Windows doesn't come pre-installed with Git so you'll need to download it from [git-scm.com](https://git-scm.com/downloads) for Windows. During the installation you should select the defaults for all prompts except the text editor. Here I recommend selecting `nano` or another option you're familiar with because the default `vim` , while powerful, is not at all user friendly. 
 
-     <img src="images/windows-git-text-editor.png" alt="windows-git-text-editor" width="500"/>
+     <img src="images/windows-git-text-editor-2.32.png" alt="windows-git-text-editor" width="500"/>
 
      Find *Git Bash* in your start menu and open a new prompt. Type `git --version` to confirm that git is available and installed. You should see something like this:
 
