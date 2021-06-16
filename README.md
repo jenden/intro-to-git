@@ -1,9 +1,6 @@
 # Intro to Git
 
 >  If you write code, you should be using a version control system. 
-  
-<br/><br/>
-
 
 
 At it's most basic, version control tracks changes in files over time and allows you to easily view differences and restore the last working version if you break something (which you will). Most version control systems work at the file level so they don’t care if you’re writing R, Python, GAMS, C++, CSS or just plain text like this tutorial. 
@@ -14,7 +11,6 @@ Plus, if you're writing software, there are a world of tools you can connect to 
 ### What you'll learn
 
 At the end of this lab you should be Git literate. You'll know why it's useful, the basics of how it works, how to follow a simple analysis workflow and enough about its more advanced capabilities that you can decide if you want to learn more.
-
 
 
 ### What you'll need
@@ -53,20 +49,18 @@ At the end of this lab you should be Git literate. You'll know why it's useful, 
 5. If you want to participate in the activity, you will also need a python environment set up that includes `pandas`, `requests` and `plotly`. You can achieve this by creating a new environment and running `pip install -r requirements.txt` with the `requirements.txt` file from this repository.
 
 
-
-
-<br/><br/>
-## Activity
+### Activity
 
 We're going to recreate the plot of Covid-19 cases by region since the 100th case using the data compiled by Johns Hopkins. We'll start with an empty folder, initialize a repository and we'll build up the contents together to create a simple version of this plot. While we're going through this process we'll talk about how git works under the hood and what each action is doing.
 
-Then you will branch your repository and make an improvement like adding growth rate lines, filters for country, hover tools, etc. Once the changes are working locally, push the changes to the remote repository and open a merge request. If you want a more realistic example, try cloning a classmates repository and submit a pull request with improvements to their code. We'll go through how to review the changes and merge them into your repository.
+Then you will branch your repository and make an improvement like adding growth rate lines, 
+filters for country, hover tools, etc. Once the changes are working locally, push the changes to 
+the remote repository and open a pull request. If you want a more realistic example, try cloning 
+a classmates repository and submit a pull request with improvements to their code. We'll go through how to review the changes and merge them into your repository.
 
 I'll try to save a bit of time to through some useful next steps and answer questions at the end. You can follow along with the [instructions](INSTRUCTIONS.md) or catch up if you missed something.
 
 
-
-<br/><br/>
 ## Recommended Resources
 
 **Getting started**
