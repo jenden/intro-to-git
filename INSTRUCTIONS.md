@@ -729,7 +729,7 @@ $ git push -u origin feature/tool-tip-date
 
 ### Whoops!
 
-This is where Git is great. Let's say you're making changes and whatever you were attempting doesn't work out. This happens all the time to me. Or maybe you made an accidental key-stroken in a file which is breaking things without realizing it.
+This is where Git is great. Let's say you're making changes and whatever you were attempting doesn't work out. This happens all the time to me. Or maybe you made an accidental key stroke in a file which is breaking things without realizing it.
 
 At any point you can check your repository to see what has changed. In this case, I made a change in *make_plot.py* which would cause the tooltip to fail.
 
