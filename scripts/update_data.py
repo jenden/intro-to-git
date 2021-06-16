@@ -13,7 +13,7 @@ import pandas as pd
 import requests
 
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger()
 logging.basicConfig(level=logging.INFO)
 
 DATA_URL='https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'
