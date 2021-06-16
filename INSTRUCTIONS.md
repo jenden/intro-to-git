@@ -779,7 +779,7 @@ From your repo on GitHub, you should see a prompt for a new pull request. This i
 
 
 
-Once you've create the pull request, you can click around the tabs to see the commits in the request and view the diff between the two branches. You can even click and add comments or suggest correctsion to specific lines of code directly within the browser. This will start a conversation thread so you can discs the changes and resolve.
+Once you've create the pull request, you can click around the tabs to see the commits in the request and view the diff between the two branches. You can even click and add comments or suggest corrections to specific lines of code directly within the browser. This will start a conversation thread so you can discuss the changes and resolve.
 
 ![github-pr-diff](images/github-pr-diff.png)
 
