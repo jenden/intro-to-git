@@ -107,7 +107,7 @@ $ git config user.email <my-email@example.com>
 
 
 
-## Add a file
+### Add a file
 
 Let's create a README in our repository. A README is a text document (usually in Markdown) that provides new users (and sometimes, yourself in six months) an introduction to the project. It should explain the purpose of the project, how to set up the development environment and links to other useful information, either in the repository or externally. As a bonus, the README will effectively become the cover page of your repository on GitHub.
 
@@ -199,7 +199,7 @@ Date:   Wed Apr 29 22:06:27 2020 -0700
 
 
 
-## Get some data
+### Get some data
 
 Let's make this repository do something useful. I've created a script to pull the daily COVID-19 data curated by Johns Hopkins. Create a new directory called `scripts` in your repository and then add the [`update_data.py`](scripts/update_data.py) script to the directory. 
 
@@ -264,7 +264,7 @@ Hopefully that all went smoothly. If the script failed, check that you created a
 
 
 
-## Update documentation
+### Update documentation
 
 To remember how to run this script next time we want to update data, we'll need to tell our future selves (and other users) how to set up a python environment and how to run the script. The README is the obvious place to document this. 
 
@@ -298,7 +298,7 @@ python scripts/update_data.py --end 2020-04-25
 
 
 
-## Commit changes
+### Commit changes
 
 We just created a bunch of new files in our repository. Check the status and you can see the new files and directories we just created.
 
@@ -346,7 +346,7 @@ Untracked files:
 
 
 
-Git now indicates that three changes are staged for commit including the new files *requirements.txt* *scripts/update_data.py*. We can now make a commit and permanently incorporate those changes.
+Git now indicates that three changes are staged for commit including the new files *requirements.txt* and *scripts/update_data.py*. We can now make a commit and permanently incorporate those changes.
 
 ```bash
 $ git commit -m "Add data update script and environment requirements"
@@ -358,7 +358,7 @@ $ git commit -m "Add data update script and environment requirements"
 
 
 
-## Ignore changes
+### Ignore changes
 
 Unlike the other files, the *env* directory is specific to our local machine and shouldn't be contributed to the repository because anyone who clones the repository will recreate their own environment. Likewise, the contents of *data* doesn't need to be version controlled because it can be downloaded from the source at any point in time. In general, it's good practice to keep data out of version control and separate from the code to process it. Luckily it's easy to tell Git to ignore files with a [`.gitignore`](https://help.github.com/en/github/using-git/ignoring-files) file. Create a file in the root directory and put in the following contents:
 
@@ -394,7 +394,7 @@ $ git commit -m "Create gitignore"
 
 
 
-## Under the hood
+### Under the hood
 
 You may have noticed that every time we get the status or make commits, Git tells us something about being on "branch master". This raises two questions: what's a branch, and what's master?
 
@@ -416,7 +416,7 @@ Okay, back to creating our plot.
 
 
 
-## Create the plot!
+### Create the plot!
 
 Now we have our data, we're ready to visualize the data and save a plot. We'll use [plotly express](https://plotly.com/python/plotly-express/) so we'll need to add `plotly` to the *requirements.txt* file. If you check the status of the repository you'll see a modified file. We can check what's been modified by running `git diff`.
 
@@ -727,11 +727,49 @@ $ git push -u origin feature/tool-tip-date
 
 
 
+### Whoops!
+
+This is where Git is great. Let's say you're making changes and whatever you were attempting doesn't work out. This happens all the time to me. Or maybe you made an accidental key-stroken in a file which is breaking things without realizing it.
+
+At any point you can check your repository to see what has changed. In this case, I made a change in *make_plot.py* which would cause the tooltip to fail.
+
+```bash
+$ git status
+diff --git a/scripts/make_plot.py b/scripts/make_plot.py
+index 021ede9..3ea5ff6 100644
+--- a/scripts/make_plot.py
++++ b/scripts/make_plot.py
+@@ -23,6 +23,6 @@ labels = {
+ fig = px.line(x='days_since_100', y='confirmed', color='country', 
+               data_frame=data.loc[data['country'].isin(top_n.index)].sort_values('date'),
+               log_y=True, range_y=[100, y_max], labels=labels,
+-              hover_data=['country', 'confirmed', 'days_since_100', 'date'])
++              hover_data=['country', 'confirmed', 'days_since_100', 'data'])
+ 
+ plotly.offline.plot(fig, filename='figures/covid-19-cases.html')
+```
+
+It's easy to revert that change by telling git to checkout the last version of this file. 
+
+```bash
+$ git checkout -- scripts/make_plot.py
+$ git diff
+# empty!
+```
+
+
+
+Better yet, many text editors and IDEs have Git integrations built in which will highlight the change and give you an option to revert that single line.
+
+![revert-line-vscode](images/revert-line-vscode.png)
+
+
+
 Now we can go to GitHub and create a pull request to merge the changes back into master.
 
 
 
-### Pull requests
+## Pull requests
 
 When you want to merge one branch into another (usually a feature branch into the main master branch), the best practice is to open a pull request on the server that states what changes were made. This request is submitted to the owner of repository so they can "pull" the changes you've created into their code.
 
