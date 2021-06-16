@@ -3,12 +3,9 @@
 >  If you write code, you should be using a version control system. 
 
 
-
-
 At it's most basic, version control tracks changes in files over time and allows you to easily view differences and restore the last working version if you break something (which you will). Most version control systems work at the file level so they don’t care if you’re writing R, Python, GAMS, C++, CSS or just plain text like this tutorial. 
 
 Plus, if you're writing software, there are a world of tools you can connect to your version control system to perform continuous integration and continuous delivery or deployment (CI/CD) that will help you ship faster and create better quality products.
-
 
 
 ### What you'll learn
@@ -16,20 +13,19 @@ Plus, if you're writing software, there are a world of tools you can connect to 
 At the end of this lab you should be Git literate. You'll know why it's useful, the basics of how it works, how to follow a simple analysis workflow and enough about its more advanced capabilities that you can decide if you want to learn more.
 
 
-
 ### What you'll need
 
 1. Git installed on your computer. Depending on your system, it may already be installed. I have some basic instructions for Mac and Windows below. If they don't work for you, turn to your friends, Google and Stack Overflow! 
 
-   - On a Mac, open the Terminal application type `git --version` and then hit enter. If you see a response like the one below you're all set. If git is not installed, you should be prompted to install the Xcode Command Line tools from Apple. If all else fails, follow the instructions on [git-scm.org](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install for macOS.
+   - On a Mac, open the Terminal application type `git --version` and then hit enter. If you see a response like the one below you're all set. If git is not installed, you should be prompted to install the Xcode Command Line tools from Apple. If all else fails, follow the instructions on [git-scm.org](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install for macOS. I had 2.24 when this screenshot was taken, but the specific version doesn't make much difference.
 
      <img src="images/macos-git-version.png" alt="macos-git-version" width="500"/>
 
-   - Windows doesn't come pre-installed with Git so you'll need to download it from [git-scm.com](https://git-scm.com/downloads) for Windows. During the installation you should select the defaults for all prompts except the text editor. Here I highly recommend selecting `nano` because the default `vim` , while powerful, is not at all user friendly. 
+   - Windows doesn't come pre-installed with Git so you'll need to download it from [git-scm.com](https://git-scm.com/downloads) for Windows. During the installation you should select the defaults for all prompts except the text editor. Here I recommend selecting `nano` or another option you're familiar with because the default `vim` , while powerful, is not at all user friendly. 
 
-     <img src="images/windows-git-text-editor.png" alt="windows-git-text-editor" width="500"/>
+     <img src="images/windows-git-text-editor-2.32.png" alt="windows-git-text-editor" width="500"/>
 
-     Find *Git Bash* in your start menu and open a new prompt. Type `git --version` to confirm that git is available and installed. You should see something like this:
+     Find *Git Bash* in your start menu and open a new prompt. Type `git --version` to confirm that git is available and installed. You should see something like this. I had 2.26 when this screenshot was taken, but the version doesn't really matter. 
 
      <img src="images/windows-git-bash.png" alt="windows-git-bash" width="500"/>
 
@@ -53,17 +49,16 @@ At the end of this lab you should be Git literate. You'll know why it's useful, 
 5. If you want to participate in the activity, you will also need a python environment set up that includes `pandas`, `requests` and `plotly`. You can achieve this by creating a new environment and running `pip install -r requirements.txt` with the `requirements.txt` file from this repository.
 
 
-
-
 ### Activity
 
 We're going to recreate the plot of Covid-19 cases by region since the 100th case using the data compiled by Johns Hopkins. We'll start with an empty folder, initialize a repository and we'll build up the contents together to create a simple version of this plot. While we're going through this process we'll talk about how git works under the hood and what each action is doing.
 
-Then you will branch your repository and make an improvement like adding growth rate lines, filters for country, hover tools, etc. Once the changes are working locally, push the changes to the remote repository and open a merge request. If you want a more realistic example, try cloning a classmates repository and submit a pull request with improvements to their code. We'll go through how to review the changes and merge them into your repository.
+Then you will branch your repository and make an improvement like adding growth rate lines, 
+filters for country, hover tools, etc. Once the changes are working locally, push the changes to 
+the remote repository and open a pull request. If you want a more realistic example, try cloning 
+a classmates repository and submit a pull request with improvements to their code. We'll go through how to review the changes and merge them into your repository.
 
 I'll try to save a bit of time to through some useful next steps and answer questions at the end. You can follow along with the [instructions](INSTRUCTIONS.md) or catch up if you missed something.
-
-
 
 
 ## Recommended Resources

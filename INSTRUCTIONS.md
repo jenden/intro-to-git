@@ -5,8 +5,6 @@ We're going to create a plot of the Covid-19 cases around the world using public
 [![example-plot](images/example-plot.png)](https://www.ft.com/content/ff3affea-63c7-11ea-b3f3-fe4680ea68b5)
 
 
-
-
 ## But first, what is Git?
 
 Git is a distributed version control system. It's software to help track and manage source code, which means it works with any kind of text files. It was developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) (the creator of Linux) to manage the Linux kernel. The software is open source and freely distributed.
@@ -102,9 +100,6 @@ If you don't see any output, you can set these values for all repositories on yo
 $ git config user.name <my-username>
 $ git config user.email <my-email@example.com>
 ```
-
-
-
 
 
 ### Add a file
@@ -320,7 +315,9 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-This is more complicated than before. We have untracked files *requirements.txt*, untracked directories *data/*, *env/* and *scripts/* and modified file *README.md*. 
+
+
+This is more complicated than before. We have untracked files *requirements.txt*, untracked directories *data/*, *env/* and *scripts/* and modified *README.md*. 
 
 Now is a good time to talk about the life cycle of Git files. All files we create start out as "untracked" in our working tree. When we use `git add` we checkpoint the current contents of the file in the "staging area". Then when we are happy with the changes we've staged, we can create a permanent record of those changes by creating a commit.
 
@@ -483,7 +480,6 @@ fig = px.line(x='days_since_100', y='confirmed', color='country',
               log_y=True, range_y=[100, y_max], labels=labels)
 
 plotly.offline.plot(fig, filename='figures/covid-19-cases.html')
-
 ```
 
 
@@ -673,6 +669,8 @@ On branch feature/tool-tip-date
 nothing to commit, working tree clean
 ```
 
+
+
 Now let's make the changes. I'm going to add the `hover_data` argument to the plot function and pass a list of the fields that should show up in the tool tip. This list references the name of the column in the data frame, so I'm also going to update the labels dictionary so that "date" becomes "Date". Here's the relevant section of `make_plot.py` with the new additions.
 
 ```python
@@ -748,6 +746,8 @@ index 021ede9..3ea5ff6 100644
  
  plotly.offline.plot(fig, filename='figures/covid-19-cases.html')
 ```
+
+
 
 It's easy to revert that change by telling git to checkout the last version of this file. 
 
