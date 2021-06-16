@@ -1,6 +1,6 @@
 # An Intro to Git
 
-We're going to create a plot of the Covid-19 cases around the world using publicly available data compiled by [Johns Hopkins](https://github.com/CSSEGISandData). We'll write a script we can use to update the data, create a visualizations and then try contributing to someone else's code with a merge request.
+We're going to create a plot of the Covid-19 cases around the world using publicly available data compiled by [Johns Hopkins](https://github.com/CSSEGISandData). We'll write a script we can use to update the data, create a visualization and then practice contributing improvements with a pull request.
 
 [![example-plot](images/example-plot.png)](https://www.ft.com/content/ff3affea-63c7-11ea-b3f3-fe4680ea68b5)
 
@@ -13,12 +13,12 @@ Git is a distributed version control system. It's software to help track and man
 
 * Keep a canonical working version
 * Easily restore or reset changes that break your code
-* Separate valid code from new analysis or "features" 
+* Separate valid code from new code and functionality 
 * Collaborate with others on the same files
 
 Git is not a panacea and there are many ways to tie yourself up in knots. However, it can reinforce good habits and help save you from yourself. Plus, if you want to work in software, basic familiarity is a job requirement.
 
-I choose to start managing my code and documentation with Git when an idea passes the boundary from exploration of a concept into a project with identifiable deliverables such as code, figures, analysis. My usual workflow is to start with a notebook, understand what I'm building and then start creating re-usable scripts and modules that I commit to a git repository.. That's what we're going to do today.
+I choose to start managing my code and documentation with Git when an idea passes the boundary from exploration of a concept into a project with identifiable deliverables such as code, figures, analysis. My usual workflow is to start with a notebook, understand what I'm building and then start creating re-usable scripts and modules that I commit to a git repository. That's what we're going to do today.
 
 
 
@@ -26,7 +26,7 @@ I choose to start managing my code and documentation with Git when an idea passe
 
 **Git** is the tool you run on your computer to manage local repositories. **GitHub** is a service that hosts remote git repositories (like this one) so you can share your code and collaborate with others. Git can be used locally but GitHub lets users keep a secure, canonical copy in the cloud and give others access as needed. 
 
-GitHub repositories can be **public** (like [Git itself](https://github.com/git/git), [Python](https://github.com/python/cpython), various [BC Government Projects](https://github.com/bcgov)) or **private** (users include the [US Dept of Defense](https://github.com/deptofdefense), [Microsoft](https://github.com/Microsoft), and [UBC](https://github.com/ubc-library)). While there are other services (I like GitLab), GitHub is the defactor standard in the industry so we're going to use it for this tutorial.
+GitHub repositories can be **public** (like [Git itself](https://github.com/git/git), [Python](https://github.com/python/cpython), various [BC Government Projects](https://github.com/bcgov)) or **private** (users include the [US Dept of Defense](https://github.com/deptofdefense), [Microsoft](https://github.com/Microsoft), and [UBC](https://github.com/ubc-library)). While there are other services (I like [GitLab](https://about.gitlab.com)), GitHub is the defacto standard in the industry so we're going to use it for this tutorial.
 
 ![example-git-repo](images/example-git-repo.png)  
 
@@ -34,12 +34,22 @@ GitHub repositories can be **public** (like [Git itself](https://github.com/git/
 
 ## Create a Repository
 
-A repository starts as just a folder on your computer. Then we'll use Git to initialize a repository and add files. 
+Git projects are called repositories. A repository starts as just a folder on your computer.  We'll use Git to initialize the repository and add files. 
 
 
 > We're going to use the terminal to do this, so prepare yourself. I'll use `$` to denote the bash prompt (although yours may be `>`  or `%` or something else entirely) and `# <a comment>` to add additional context. The output  of commands will not have any symbol.
 
 
+
+Open a terminal window. You can do this in a stand-alone terminal window (Terminal on Mac, git-bash on Windows), or with the integrated terminal in VS Code (Terminal menu > New Terminal). 
+
+
+
+> If you're using VS Code on Windows, you will likely need to tell it to use Git Bash and not CMD or PowerShell. See [this stack overflow](https://stackoverflow.com/questions/42606837/how-do-i-use-bash-on-windows-from-the-visual-studio-code-integrated-terminal) for a quick overview of how to change it.
+
+
+
+Now you can navigate to the directory where you want to save your code using `cd` and create a new folder for this project. For me that is `/Users/willjenden/Projects`. Most shells will let you access your user directory with the `~` so navigating to  `~/Projects` gets me to the same place.
 
 ```bash
 $ # print the current directory (i.e. folder) 
@@ -57,7 +67,7 @@ $ ls
 
 
 
-We know have a new directory with nothing in it. It's not even a Git repository yet. In order to make it a Git repository we need to run `git init` from the directory. You can do this at any time in any folder (that's not a child of another Git repository) not just an empty one.
+We now have a new directory with nothing in it. It's not even a Git repository yet. In order to make it a Git repository we need to run `git init` from the directory. You can do this at any time in any folder (that's not a child of another Git repository) not just an empty one.
 
 ```bash
 $ git init
@@ -71,7 +81,7 @@ And we have a repository. It's empty, but now it's an empty Git repository. If y
 
 
 
-> Note: Along with `.git`, you should have seen two other entires: `.` and `..`.  `.` is a reference to the current directory and `..` is a reference to the parent directory. You can try navigating around with different combinations of `.` and `..` like `cd ..` will bring you to `covid-19` and `cd covid-19/../` will take you on trip into the covid directory and then back out.
+> Note: Along with `.git`, you should have seen two other entires: `.` and `..`.  `.` is a reference to the current directory and `..` is a reference to the parent directory. You can try navigating around with different combinations of `.` and `..` like `cd ..` will bring you to `Projects` and `cd covid-19/../` will take you on trip into the covid directory and then back out.
 
 
 
@@ -86,7 +96,7 @@ $ git config user.email
 me@example.com
 ```
 
-If you don't see any output, you can set these values for all repositories on your computer with the following commands. Just substitute with your username and email address. If you're created an account with GitHub, you can use the username and email you created there.
+If you don't see any output, you can set these values for all repositories on your computer with the following commands. Just substitute with your username and email address. If you've created an account with GitHub, you can use the username and email you created there.
 
 ```bash
 $ git config user.name <my-username>
@@ -99,7 +109,7 @@ $ git config user.email <my-email@example.com>
 
 ## Add a file
 
-Let's create a README in our repository. A README is a text document (usually in Markdown) that provides new users (and sometimes, yourself in six months) an introduction to the project. It should explain the purpose of the project, how to set up the development environment and how to run links to other useful information, either in the repository or externally.
+Let's create a README in our repository. A README is a text document (usually in Markdown) that provides new users (and sometimes, yourself in six months) an introduction to the project. It should explain the purpose of the project, how to set up the development environment and links to other useful information, either in the repository or externally. As a bonus, the README will effectively become the cover page of your repository on GitHub.
 
 I'm not going to make you write files from command line, so let's open an editor in this folder. I'm using Visual Studio Code so I can run `code .` to open the current directory (`.`) in VSCode.
 
@@ -145,7 +155,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 
 
-We use the `git status` to tell us what's going in the repo and often gives us useful hints about what we should do next. The important take away here is that we have "untracked" files. Untracked files are files that existing in the Git repository (the top level directory or any child directory) but are not being managed by Git. We can tell Git to start tracking a file with the `git add <file>` command.
+We use  `git status` to tell us what's going in the repo and it often gives us useful hints about what we should do next. The important take away here is that we have "untracked" files. Untracked files are files that exist in the Git repository (the top level directory or any child directory) but are not yet managed by Git. We can tell Git to start tracking a file with the `git add <file>` command.
 
 ```bash
 $ git add README.md
@@ -161,7 +171,7 @@ Changes to be committed:
 
 
 
-The *README.md* file is now in the staging area for our repository with a note that says it's a new file. For Git to create an indelible copy of the file with it's current contents, we need to create a "commit". A commit is the immutable, atomic unit of Git because the state of the repository is built up from a graph of related commits. 
+The *README.md* file is now in the staging area for our repository with a note that says it's a new file. For Git to create an indelible copy of the file with it's current contents, we need to create a "commit". A commit is the immutable, atomic unit of Git and the state of the repository is built up from a graph of related commits. 
 
 ```bash
 $ git commit -m "Add README"
@@ -189,13 +199,74 @@ Date:   Wed Apr 29 22:06:27 2020 -0700
 
 
 
-## Add some more files
+## Get some data
 
 Let's make this repository do something useful. I've created a script to pull the daily COVID-19 data curated by Johns Hopkins. Create a new directory called `scripts` in your repository and then add the [`update_data.py`](scripts/update_data.py) script to the directory. 
 
-In order to run this script we'll need to tell our future selves (and other users) how to set up a python environment and how to use the script to update data. A README is the obvious place to document this. 
+This script requires a python environment with `pandas` and `requests` packages. You can create a requirements file to specify the dependencies for anyone who wants to use this code in the future.
+
+```
+# requirements.txt
+requests
+pandas
+```
+
+Now let's create a virtual environment, install our requirements and run our `update_data.py` script so we can start to visualize the data!
+
+```bash
+$ # create a python virtualenv, activate it and install requirements
+$ virtualenv env
+$ source env/bin/activate
+$ pip install -r requirements.txt
+```
 
 
+
+> Alternatively, you could create a conda environment. I generally prefere these environments, but they don't create a folder we need to ignore so it's not as useful for this demo. Install a conda environment using python 3.8 and the dependencies in requirements.txt like this.
+>
+> ```bash
+> $ conda create --name covid-19 python=3.8 --file requirements.txt
+> $ conda activate covid-19
+> ```
+>
+> Once you activate the environment, your shell should contain the active environment in the prompt (although it probably won't look quite like this)
+>
+> ```bash
+> (covid-19) $
+> ```
+
+
+
+Once your python environment is active and you have the dependencies installed, create directories for the data and run the script to download each day and compile into a single file.
+
+```bash
+$ # make directories for the data
+$ # -p option tells mkdir to create *p*arent directories
+$ mkdir -p data/raw data/processed
+$ python scripts/update_data.py --end 2020-06-30
+INFO:root:Downloading data for 2020-01-22 - 2020-06-30 to /Users/willjenden/Projects/covid-19/data/raw
+INFO:root:01-22-2020 -- downloading file: https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/01-22-2020.csv
+INFO:root:01-22-2020 -- saved to /Users/willjenden/Projects/covid-19/data/raw/01-22-2020.csvINFO:scripts/update_data.py:04-25-2020 -- downloading file: https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/04-25-2020.csv
+...
+INFO:root:Read 06-30-2020.csv
+INFO:root:Loaded 22632 records over period from 2020-01-22 00:00:00 to 2020-06-30 00:00:00
+INFO:root:Sample rows
+          date                   country  confirmed   deaths
+155 2020-04-10                   Somalia       21.0      1.0
+125 2020-06-17                 Nicaragua     1823.0     64.0
+166 2020-04-03               Timor-Leste        1.0      0.0
+23  2020-06-21                    Brazil  1085038.0  50617.0
+31  2020-03-20                     Chile      434.0      0.0
+INFO:root:Combined dataset written to /Users/willjenden/Projects/covid-19/data/processed/covid19-daily.csv
+```
+
+Hopefully that all went smoothly. If the script failed, check that you created and specified the right data directory beforehand and that the URL for the CSV files hasn't changed. A copy of the data file is included in this repository, so feel free to download [`data/processed/covid19-daily.csv`](data/processed/covid19-daily.csv) so you can move on with the demo.
+
+
+
+## Update documentation
+
+To remember how to run this script next time we want to update data, we'll need to tell our future selves (and other users) how to set up a python environment and how to run the script. The README is the obvious place to document this. 
 
 > A quick aside. Documentation is hard to get right. If we carefully document every bit of our script (or comment it for that matter), it's very easy for it to get out of sync with what the code actually does. Our goal is to strike a balance to let people know what to do but not to create technical debt for ourselves in the future with stacks of documentation we need to update every time we modify the code. And, like many things, there are diminishing returns to our efforts. A little, well-maintained documentation goes a long way.
 
@@ -221,24 +292,15 @@ Run the `update_data.py`script to update the data. The command below will downlo
 data from Jan 22 to April 25 and save it in the `data/` folder of this directory.
 
 ​```bash
-python scripts/update_data.py --start 2020-01-22 --end 2020-04-25 data/
+python scripts/update_data.py --end 2020-04-25
 ​```
 ```
 
 
 
-Now create the requirements.txt file with the following contents.
+## Commit changes
 
-```
-# requirements.txt
-requests==2.23
-pandas==1.0
-
-```
-
-
-
-That's all done. Let's check the status of our Git repository:
+We just created a bunch of new files in our repository. Check the status and you can see the new files and directories we just created.
 
 ```bash
 $ git status
@@ -250,100 +312,59 @@ Changes not staged for commit:
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
+        data/
+        env/
         requirements.txt
         scripts/
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
+This is more complicated than before. We have untracked files *requirements.txt*, untracked directories *data/*, *env/* and *scripts/* and modified file *README.md*. 
 
-
-This is more complicated than before. We have untracked files *requirements.txt* and *scripts/* and modified file *README.md*. Now is a good time to talk about the life cycle of Git files. All files we create start out as "untracked" in our working tree. When we use `git add` we checkpoint the current contents of the file in the "staging area". Then when we are happy with the changes we've staged, we can create a permanent record of those changes by creating a commit.
+Now is a good time to talk about the life cycle of Git files. All files we create start out as "untracked" in our working tree. When we use `git add` we checkpoint the current contents of the file in the "staging area". Then when we are happy with the changes we've staged, we can create a permanent record of those changes by creating a commit.
 
 <img alt="git-workflow-local" src="images/git-workflow-local.png" width=400px>
 
-In this commit, we have changes to the README file that Git is tracking (because it was previously committed) and new files we have just created. Let's add them all to the staging area and commit them. We can tell Git to add the files by listing them one by one like `git add requirements.txt scripts/update_data.py` or we can tell Git to add all files in the current directory using the `.` shorthand.  Now run `git commit` like before.
+Let's tell Git that we want to stage the changes to *README.md* and start tracking *requirements.txt* and the *scripts/* directory. 
 
 ```bash
-$ git add .
+$ git add requirements.txt scripts/ README.md
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   README.md
+	new file:   requirements.txt
+	new file:   scripts/update_data.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	data/
+	env/
+```
+
+
+
+Git now indicates that three changes are staged for commit including the new files *requirements.txt* *scripts/update_data.py*. We can now make a commit and permanently incorporate those changes.
+
+```bash
 $ git commit -m "Add data update script and environment requirements"
-[master 4bc6f91] Add data update script and environment requirements
- 3 files changed, 111 insertions(+)
+[master 4c98ca2] Add data update script and environment requirements
+ 3 files changed, 169 insertions(+)
  create mode 100644 requirements.txt
  create mode 100644 scripts/update_data.py
 ```
 
 
 
-You can use `git log` to assure yourself the commit worked. You can also check `git status` and see that you have "nothing to commit" because the working tree is "clean".
+## Ignore changes
 
-
-
-## Get some data
-
-Now let's create a virtual environment, install our requirements and run our `update_data.py` script so we can start to visualize the data!
-
-```bash
-$ # create a python virtualenv, activate it and install requirements
-$ virtualenv env
-$ source env/bin/activate
-$ pip install -r requirements.txt
-```
-
-
-
-> Alternatively, you could create a conda environment. I generally prefere these environments, but they don't create a folder we need to ignore so it's not as useful for this demonstration. Install a conda environment using python 3.8 and the dependencies in requirements.txt like this.
->
-> ```bash
-> $ conda create --name covid-19 python=3.8 --file requirements.txt
-> $ conda activate covid-19
-> ```
->
-> Once you activate the environment, your shell should contain the active environment in the prompt (although it probably won't look quite like this)
->
-> ```bash
-> (covid-19) $
-> ```
-
-
-
-Once your python environment is active and you have the dependencies installed, create a diretory for the data and run the script to populate it.
-
-```bash
-$ # make directory for the data
-$ mkdir data
-$ python scripts/update_data.py data/
-INFO:scripts/update_data.py:Downloading data for 2020-01-22 - 2020-04-28 to /Users/willjenden/Projects/covid-19/data/original
-INFO:scripts/update_data.py:01-22-2020 -- downloading file: https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/01-22-2020.csv
-...
-INFO:scripts/update_data.py:04-25-2020 -- downloading file: https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/04-25-2020.csv
-INFO:scripts/update_data.py:04-25-2020 -- saved to /Users/willjenden/Projects/covid-19/data/original/04-25-2020.csv
-```
-
-
-
-Hopefully that all went smoothly. If the script failed, check that you created and specified the right data directory beforehand and that the URL for the CSV files hasn't changed. 
-
-We just created a bunch of new files in our repository. Check the status and you can see two new directories, *env* and *data*.
-
-```bash
-$ git status
-On branch master
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        data/
-        env/
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-
-
-Unlike previous files, the *env* directory is specific to our local machine and shouldn't be contributed to the repository. The contents of *data* doesn't need to be version controlled because it can be downloaded from the source at any point in time. In general, it's good practice to keep data out of version control and separate from the code to process it. Luckily it's easy to tell Git to ignore files with a [`.gitignore`](https://help.github.com/en/github/using-git/ignoring-files) file. Create a file in the root directory and put in the following contents:
+Unlike the other files, the *env* directory is specific to our local machine and shouldn't be contributed to the repository because anyone who clones the repository will recreate their own environment. Likewise, the contents of *data* doesn't need to be version controlled because it can be downloaded from the source at any point in time. In general, it's good practice to keep data out of version control and separate from the code to process it. Luckily it's easy to tell Git to ignore files with a [`.gitignore`](https://help.github.com/en/github/using-git/ignoring-files) file. Create a file in the root directory and put in the following contents:
 
 ```
 # .gitignore
-.vscode
+.vscode  # VS Code saves configuration settings here
 env/
 data/
 
@@ -351,7 +372,7 @@ data/
 
 
 
-Now try checking the status of the repository again. You can use`ls` to confirm that the directories still exist but that Git is ignoring them. Now commit the contents of the *.gitignore* file and let's continue.
+Now try checking the status of the repository again. You can use `ls` to confirm that the directories still exist but that Git is ignoring them. Now commit the contents of the *.gitignore* file and let's continue.
 
 ```bash
 $ git status
@@ -389,7 +410,7 @@ This animation shows how each new commit points to the previous commit and the m
 
 This animation also introduces the concept of the HEAD. The HEAD refers to the last commit in the current branch. When we checkout a new branch, our HEAD will move to the last commit on that branch.
 
-These animations were created with the excellent [Explaint Git](https://onlywei.github.io/explain-git-with-d3/#commit). If you want to dive deeper and understand how Git works under the hood, I strongly recommend exploring this site.
+These animations were created with the excellent [Explain Git](https://onlywei.github.io/explain-git-with-d3/#commit). If you want to dive deeper and understand how Git works under the hood, I strongly recommend exploring this site.
 
 Okay, back to creating our plot.
 
@@ -397,37 +418,75 @@ Okay, back to creating our plot.
 
 ## Create the plot!
 
-Now we have our data, we're ready to visualize the data and save a plot. We'll use [plotly express](https://plotly.com/python/plotly-express/) so we'll need to add `plotly==4.6` to the *requirements.txt* file. If you check the status of the repository you'll see a modified file. We can check what's been modified by running `git diff`.
+Now we have our data, we're ready to visualize the data and save a plot. We'll use [plotly express](https://plotly.com/python/plotly-express/) so we'll need to add `plotly` to the *requirements.txt* file. If you check the status of the repository you'll see a modified file. We can check what's been modified by running `git diff`.
 
 ```bash
 $ git diff
 diff --git a/requirements.txt b/requirements.txt
-index 99510e7..aaab375 100644
+index 69de461..70c3d32 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -1,2 +1,3 @@
- requests==2.23
- pandas==1.0
-+plotly==4.6
+ pandas
+ requests
++plotly
 ```
 
 
 
-There's a lot of output here, but the critical pieces are the lines with that are prefixed with a + or – symbol. Commit the change with an appropriate message and then install the new dependency in your local environment.
+There's a lot of output here, but the critical pieces are the lines with that are prefixed with a + symbol, indicating a new line or a – symbol indicating removed line. In this case, we've only added one line so the diff is very simple. Commit the change with an appropriate message and then install the new dependency in your local environment.
+
+```bash
+$ git commit -am "Add plotly to requirements.txt"
+[master 797ea93] Add plotly to requirements.txt
+ 1 file changed, 1 insertion(+)
+$ pip install -r requirements.txt
+```
+
+
 
 Let's add the [`make_plot.py`](scripts/make_plot.py) to out scripts directory. This script is hard-coded to perform the following steps:
 
-* reads each CSV in the *data* directory, 
+* read the `data/processed/covid19-daily.csv` file as a Pandas DataFrame
+* count days since the 100th case 
+* plot the confirmed number of cases by country on a log scale against days since the 100th case
+* save the plot to the *figures* directory
 
-* normalizes the data by correcting for small changes over time (e.g. a column renamed from "Country/Region" to "Country_Region", some country references changing like "Mainland China" becoming just "China") and creates a single pandas dataframe
 
-* counts days since the 100th case and then 
 
-* plots the confirmed number of cases by country on a log scale against days since the 100th case
+```python
+# make_plot.py
+import pandas as pd
+import plotly
+import plotly.express as px
 
-* saves the plot to the *figures* directory
+data = pd.read_csv('data/processed/covid19-daily.csv')
 
-  
+data['days_since_100'] = data[data['confirmed'] > 100] \
+        .sort_values('date') \
+        .groupby('country') \
+        .cumcount()
+
+top_n = data.groupby('country')['confirmed'].max().sort_values(ascending=False).head(25)
+
+y_max = max(data['confirmed']) * 1.1
+
+labels = {
+    'days_since_100': 'Days Since 100 Cases',
+    'confirmed': 'Confirmed Cases',
+    'country': 'Country/Region',
+    'date': 'Date'
+}
+
+fig = px.line(x='days_since_100', y='confirmed', color='country', 
+              data_frame=data.loc[data['country'].isin(top_n.index)].sort_values('date'),
+              log_y=True, range_y=[100, y_max], labels=labels)
+
+plotly.offline.plot(fig, filename='figures/covid-19-cases.html')
+
+```
+
+
 
 Now add a bit of a description to the README to explain how to create the visualization.
 
@@ -441,7 +500,6 @@ plot of the confirmed cases by country.
 mkdir figures
 python scripts/make_plot.py
 ​```
-
 ```
 
 
@@ -475,7 +533,7 @@ That looks about right. Let's clean up our working tree by staging the changes t
 ```bash
 # append "figures/" to the end of the .gitignore file
 $ echo "figures/" >> .gitignore
-$ git add README.md scripts/make_plot.py .gitignore
+$ git add README.md scripts/ .gitignore
 $ git status
 On branch master
 Changes to be committed:
@@ -525,6 +583,8 @@ Once created, you'll see the main page which lists a number of options for how t
 
 The `git remote` command manages references to other repositories. We're going to create a reference to our Git remote repository and give it the shorthand name `origin` by convention. This makes more sense when you think that you often get a copy of someone else's repository in which case "origin" refers to the place where your copy originated.
 
+
+
 > Note: There are two ways to authenticate with Git. The recommended method is by using an SSH key and a url that looks like `git@github.com:<username>/<repository>.git` but this requires a bit of initial set up. You can also use the url that looks like `https://github.com/<username>/<respository>.git`  and authenticate with your GitHub username and password when prompted. Git will know what to do depending on which url you give it.
 
 
@@ -547,6 +607,8 @@ To https://github.com/jenden/covid-19.git
  * [new branch]      master -> master
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
+
+
 
 Congratulations! You've just pushed your first commits up to a GitHub repo. Let's go check it out what it looks like on the GitHub website.
 
